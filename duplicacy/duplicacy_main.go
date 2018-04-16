@@ -689,7 +689,7 @@ func backupRepository(context *cli.Context) {
 	showStatistics := context.Bool("stats")
 
 	enableVSS := context.Bool("vss")
-	vssTimeout := context.Int("vss-timeout")
+	// vssTimeout := context.Int("vss-timeout")
 
 	dryRun := context.Bool("dry-run")
 	uploadRateLimit := context.Int("limit-rate")
@@ -699,7 +699,8 @@ func backupRepository(context *cli.Context) {
 
 	backupManager.SetupSnapshotCache(preference.Name)
 	backupManager.SetDryRun(dryRun)
-	backupManager.Backup(repository, quickMode, threads, context.String("t"), showStatistics, enableVSS, vssTimeout)
+	// backupManager.Backup(repository, quickMode, threads, context.String("t"), showStatistics, enableVSS, vssTimeout)
+	backupManager.Backup(repository, quickMode, threads, context.String("t"), showStatistics, enableVSS)
 
 	runScript(context, preference.Name, "post")
 }
